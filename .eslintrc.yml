@@ -15,3 +15,12 @@ rules:
     - error
     - singleline: 5
       multiline: 1
+  no-restricted-imports:
+    - error
+    - patterns:
+        - "../*"
+        - "./*"
+        - "./assets/*"
+        - "./components/*"
+        - "./pages/*"
+        - "./public/*"
