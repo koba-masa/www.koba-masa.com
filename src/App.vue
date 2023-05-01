@@ -13,6 +13,7 @@ import vue from "@/assets/vue.svg";
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <!-- <RouterView></RouterView> -->
 </template>
 
 <style scoped>
