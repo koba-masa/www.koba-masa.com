@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <RouterView />
+  <h1>www.koba-masa.com</h1>
 </template>
 
-<style scoped></style>
+<style></style>
