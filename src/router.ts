@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HelloWorldVue from "@/components/HelloWorld.vue";
+import Top from "@/pages/Top.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [{ name: "Hello World!", path: "/", component: HelloWorldVue }],
+  routes: [{ name: "www.koba-masa.com", path: "/", component: Top }],
 });
 
 export default router;

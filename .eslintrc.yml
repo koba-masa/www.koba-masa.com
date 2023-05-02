@@ -1,6 +1,7 @@
 env:
   browser: true
   es2022: true
+root: true
 extends:
   - 'plugin:vue/vue3-recommended'
   - 'eslint:recommended'
@@ -24,3 +25,8 @@ rules:
         - "./components/*"
         - "./pages/*"
         - "./public/*"
+overrides:
+  - files:
+      - src/pages/Top.vue
+    rules:
+      vue/multi-word-component-names: off
