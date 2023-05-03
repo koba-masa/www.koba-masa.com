@@ -19,8 +19,13 @@ jobs:
         run: |
           npm install yarn
           yarn install
+
       - name: Prettier
         run: yarn prettier
 
       - name: Lint
         run: yarn lint
+
+      - name: Build
+        run: |
+          yarn build
