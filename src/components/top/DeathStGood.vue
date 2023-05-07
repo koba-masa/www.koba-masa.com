@@ -91,6 +91,7 @@ const updateProgressBar = () => {
   flex-direction: column;
   align-items: center;
   margin: 30px auto 50px;
+  touch-action: manipulation;
 }
 
 .deathStGood .light {
