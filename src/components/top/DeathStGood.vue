@@ -9,7 +9,7 @@ const good = ref<Good>();
 const displayCount = ref<number | undefined>(0);
 const pressedCount = ref<number>(0);
 const progressValue = ref<number>(0);
-const isFinished = ref<Boolean>(false);
+const isFinished = ref<boolean>(false);
 
 let intervalId: number | null = null;
 
@@ -76,11 +76,11 @@ const updateProgressBar = () => {
   <div class="deathStGood">
     <div class="good">
       <img :src="goodImage" @click="pressGood()">
-      <span class="counter">{{displayCount}}</span>
+      <span class="counter">{{ displayCount }}</span>
     </div>
     <!-- <div class="light"></div> -->
     <div class="progress">
-      <progress max="100" :value="progressValue"></progress>
+      <progress max="100" :value="progressValue" />
     </div>
   </div>
 </template>

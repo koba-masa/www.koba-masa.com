@@ -13,7 +13,9 @@ const imageWidth = () => {
 <template>
   <div class="githubContribution">
     <figure>
-      <figcaption class="caption">My GitHub Contribution</figcaption>
+      <figcaption class="caption">
+        My GitHub Contribution
+      </figcaption>
       <a href="https://github.com/koba-masa" target="_blank">
         <img :src="`https://grass-graph.appspot.com/images/koba-masa.png?width=${imageWidth()}`">
       </a>
