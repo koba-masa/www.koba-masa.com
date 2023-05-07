@@ -78,7 +78,7 @@ const updateProgressBar = () => {
       <img :src="goodImage" @click="pressGood()">
       <span class="counter">{{displayCount}}</span>
     </div>
-    <div class="light"></div>
+    <!-- <div class="light"></div> -->
     <div class="progress">
       <progress max="100" :value="progressValue"></progress>
     </div>
