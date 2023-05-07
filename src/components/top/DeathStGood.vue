@@ -4,7 +4,7 @@ import { Good } from '@/models/Good';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
-const apiDomain = 'http://localhost:3000'
+const apiUrl = import.meta.env.VITE_DSG_API_URL;
 const good = ref<Good>();
 const displayCount = ref<number | undefined>(0);
 const pressedCount = ref<number>(0);
@@ -18,9 +18,9 @@ onMounted(() => {
 });
 
 const getGood = async () => {
-  const apiUrl = `${apiDomain}/death_st_good/goods?url=www.koba-masa.com`
+  const url = `${apiUrl}/goods?url=www.koba-masa.com`
   try {
-    const response = await axios.get(apiUrl);
+    const response = await axios.get(url);
     good.value = response.data;
     displayCount.value = good.value?.counter;
   } catch (error) {
@@ -29,7 +29,7 @@ const getGood = async () => {
 };
 
 const updateGood = async (counter:number) => {
-  const apiUrl = `${apiDomain}/death_st_good/goods/${good.value?.id}`
+  const url = `${apiUrl}/goods/${good.value?.id}`
   try {
     const data = {
       counter: counter,
@@ -38,7 +38,7 @@ const updateGood = async (counter:number) => {
       'Content-Type': 'application/json',
     };
 
-    const response = await axios.patch(apiUrl, data, { headers });
+    const response = await axios.patch(url, data, { headers });
     good.value = response.data;
     pressedCount.value = 0;
     displayCount.value = good.value?.counter
