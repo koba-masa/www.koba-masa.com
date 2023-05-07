@@ -78,7 +78,10 @@ const updateProgressBar = () => {
       <img :src="goodImage" @click="pressGood()">
       <span class="counter">{{ displayCount }}</span>
     </div>
-    <div class="light"></div>
+    <div class="light">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
     <div class="progress">
       <progress max="100" :value="progressValue" />
     </div>
@@ -92,33 +95,55 @@ const updateProgressBar = () => {
   align-items: center;
   margin: 30px auto 50px;
   touch-action: manipulation;
-  min-width: 390px;
+  width: 390px;
   position: relative;
 }
 
 .deathStGood .good {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   position: absolute;
+  width: 100%;
+  height: 130px;
+  margin: 5px;
   z-index: 2;
 }
 
+.deathStGood .good img {
+  margin-left: 35px;
+}
+
 .deathStGood .light {
-  background: linear-gradient(to right, rgba(0, 250, 154, 1), rgba(0, 250, 154, 0.5));
   width: 100%;
-  height: 130px;
+  height: 140px;
+  display: flex;
+}
+
+.deathStGood .light .left {
+  border-top: 70px solid transparent;
+  border-bottom: 70px solid transparent;
+  border-right: 70px solid rgba(0, 250, 154, 1);
+
+  opacity: 50%;
+  z-index: 1;
+}
+
+.deathStGood .light .right {
+  background: linear-gradient(to right, rgba(0, 250, 154, 1), rgba(0, 250, 154, 0.5));
+  width: 320px;
+  height: 140px;
   opacity: 50%;
   z-index: 1;
 }
 
 .deathStGood .progress {
   display: flex;
-  align-items: center;
-  width: 100%;
+  width: 320px;
 }
 
 .deathStGood .progress progress {
   width: 100%;
+  margin-left: 50px;
 }
 
 .deathStGood .good .counter {
