@@ -78,7 +78,7 @@ const updateProgressBar = () => {
       <img :src="goodImage" @click="pressGood()">
       <span class="counter">{{ displayCount }}</span>
     </div>
-    <!-- <div class="light"></div> -->
+    <div class="light"></div>
     <div class="progress">
       <progress max="100" :value="progressValue" />
     </div>
@@ -92,19 +92,29 @@ const updateProgressBar = () => {
   align-items: center;
   margin: 30px auto 50px;
   touch-action: manipulation;
+  min-width: 390px;
+  position: relative;
+}
+
+.deathStGood .good {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
 }
 
 .deathStGood .light {
   background: linear-gradient(to right, rgba(0, 250, 154, 1), rgba(0, 250, 154, 0.5));
-  width: 50%;
+  width: 100%;
   height: 130px;
   opacity: 50%;
+  z-index: 1;
 }
 
 .deathStGood .progress {
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 100%;
 }
 
 .deathStGood .progress progress {
