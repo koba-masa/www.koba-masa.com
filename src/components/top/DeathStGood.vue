@@ -115,6 +115,7 @@ const updateProgressBar = () => {
 
 .deathStGood .good .counter {
   font-size: 85px;
+  margin-top: 25px;
 }
 
 .deathStGood .light {
