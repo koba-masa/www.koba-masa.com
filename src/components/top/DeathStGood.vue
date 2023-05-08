@@ -55,7 +55,10 @@ const pressGood = () => {
   if (!intervalId) {
     intervalId = window.setInterval(updateProgressBar, 100);
   }
-  pressedCount.value++;
+
+  if (pressedCount.value < 10000) { 
+    pressedCount.value++;
+  }
   displayCount.value = (good.value?.counter !== undefined ? good.value?.counter : 0) + pressedCount.value
 }
 
@@ -113,6 +116,11 @@ const updateProgressBar = () => {
   margin-left: 35px;
 }
 
+.deathStGood .good .counter {
+  font-size: 85px;
+  margin-top: 25px;
+}
+
 .deathStGood .light {
   width: 100%;
   height: 140px;
@@ -144,10 +152,6 @@ const updateProgressBar = () => {
 .deathStGood .progress progress {
   width: 100%;
   margin-left: 50px;
-}
-
-.deathStGood .good .counter {
-  /* font-size: 256px; */
 }
 
 .deathStGood .good img:active {
