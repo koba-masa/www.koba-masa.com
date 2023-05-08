@@ -55,7 +55,10 @@ const pressGood = () => {
   if (!intervalId) {
     intervalId = window.setInterval(updateProgressBar, 100);
   }
-  pressedCount.value++;
+
+  if (pressedCount.value < 10000) { 
+    pressedCount.value++;
+  }
   displayCount.value = (good.value?.counter !== undefined ? good.value?.counter : 0) + pressedCount.value
 }
 
