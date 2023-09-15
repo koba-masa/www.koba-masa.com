@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import goodImage from '../assets/images/good_128.png'
+
+const counter = 0;
+---
+
+<div class="death-st-good">
+  <div class="good">
+    <Image src={goodImage} alt="good" />
+    <span class="counter">{counter}</span>
+  </div>
+  <div class="light">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+  <div class="progress">
+    <progress max="100" value="100" />
+  </div>
+</div>
+
+<style>
+  .death-st-good {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto 50px;
+    touch-action: manipulation;
+    width: 390px;
+    position: relative;
+  }
+
+  .death-st-good .good {
+    display: flex;
+    justify-content: start;
+    position: absolute;
+    width: 100%;
+    height: 130px;
+    margin: 5px;
+    z-index: 2;
+  }
+
+  .death-st-good .good img {
+    margin-left: 35px;
+  }
+
+  .death-st-good .good .counter {
+    font-size: 85px;
+    margin-top: 25px;
+  }
+
+  .death-st-good .light {
+    width: 100%;
+    height: 140px;
+    display: flex;
+  }
+
+  .death-st-good .light .left {
+    border-top: 70px solid transparent;
+    border-bottom: 70px solid transparent;
+    border-right: 70px solid rgb(0 250 154 / 100%);
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .death-st-good .light .right {
+    background: linear-gradient(to right, rgb(0 250 154 / 100%), rgb(0 250 154 / 50%));
+    width: 320px;
+    height: 140px;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .death-st-good .progress {
+    display: flex;
+    width: 320px;
+  }
+
+  .death-st-good .progress progress {
+    width: 100%;
+    margin-left: 50px;
+  }
+
+  </style>
