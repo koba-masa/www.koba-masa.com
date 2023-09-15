@@ -5,10 +5,10 @@ module.exports = {
   ],
   overrides: [
     {
-    files: "*.astro",
-    options: {
-      parser: "astro",
-    },
+      files: "*.astro",
+      options: {
+        parser: "astro",
+      },
     },
   ],
   importOrderSeparation: true,
