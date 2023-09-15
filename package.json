@@ -7,7 +7,12 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "eslint": "eslint --ext .astro,.js .",
+    "stylelint": "stylelint **/*{.css,.astro}",
+    "prettier": "prettier --check .",
+    "lint": "tsc --noEmit && pnpm prettier && pnpm eslint && pnpm stylelint",
+    "format": "tsc --noEmit && prettier --write . && pnpm eslint --fix && pnpm stylelint --fix"
   },
   "dependencies": {
     "@astrojs/react": "^3.0.2",
