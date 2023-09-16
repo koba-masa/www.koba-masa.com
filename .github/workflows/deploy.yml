@@ -18,16 +18,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18.3'
-          cache: yarn
+          node-version: "20.3"
+          cache: pnpm
 
       - name: Build
         run: |
-          yarn install
-          yarn build
+          pnpm install
+          pnpm build
           tar czf dist.tar.gz dist
 
       - name: Deploy

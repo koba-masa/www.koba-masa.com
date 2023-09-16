@@ -9,23 +9,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18.3'
-          cache: yarn
+          node-version: "20.3"
+          cache: pnpm
 
       - name: Install Package
         run: |
-          npm install yarn
-          yarn install
+          pnpm install
 
       - name: Prettier
-        run: yarn prettier
+        run: pnpm prettier
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Build
         run: |
-          yarn build
+          pnpm build
