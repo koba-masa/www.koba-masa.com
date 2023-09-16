@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/Footer.astro';
+
 const { pageTitle } = Astro.props;
 ---
 
@@ -15,5 +17,6 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <slot />
+    <Footer />
   </body>
 </html>
