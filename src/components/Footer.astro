@@ -3,7 +3,11 @@ const astroUrl = "https://astro.build/"
 ---
 
 <footer>
-  <div class="powered">powered by <a href={astroUrl}>Astro</a></div>
+  <div class="built-with">
+    <a href="https://astro.build">
+      <img src="https://astro.badg.es/v2/built-with-astro/small.svg" alt="Built with Astro" width="192" height="32">
+    </a>
+  </div>
 </footer>
 
 <style>
@@ -13,8 +17,7 @@ const astroUrl = "https://astro.build/"
     display: flex;
   }
 
-  .powered {
-    margin: 50px auto;
-    color: #a9a9a9;
+  .built-with {
+    margin: 100px auto;
   }
   </style>
