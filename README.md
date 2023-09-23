@@ -1,6 +1,7 @@
 # www.koba-masa.com
 
 [![ci](https://github.com/koba-masa/www.koba-masa.com/actions/workflows/ci.yml/badge.svg)](https://github.com/koba-masa/www.koba-masa.com/actions/workflows/ci.yml)
+[![Deploy](https://github.com/koba-masa/www.koba-masa.com/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/koba-masa/www.koba-masa.com/actions/workflows/deploy.yml)
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://astro.build)
 
 ## Astro Starter Kit: Minimal
