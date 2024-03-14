@@ -1,0 +1,9 @@
+---
+const { points, strokeColor, strokeWidth, fillColor } = Astro.props;
+
+const processedPoints = points.map((point: {x: number, y: number}) => {
+  return `${point.x} ${point.y}`;
+}).join(',');
+---
+
+<polygon points={processedPoints} stroke={strokeColor} stroke-width={strokeWidth}  fill={fillColor} />

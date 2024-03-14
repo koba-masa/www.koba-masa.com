@@ -1,5 +1,6 @@
 ---
 import Line from "@/components/svg/Line.astro";
+import Polygon from "@/components/svg/Polygon.astro";
 const { length, background_color, data } = Astro.props;
 
 const title = data.title;
@@ -9,7 +10,7 @@ const scale = 5;
 const centerX = length / 2;
 const centerY = length / 2;
 const radius = length / 2 * 0.9;
-const chartWidth = radius / (scale - 1);
+const chartWidth = radius / scale;
 const innerRadius = [...Array(5)].map((_, index) => chartWidth * index);
 const startAngle = (180 - (180 * (itemKeys.length - 2) / itemKeys.length) -90) * Math.PI / 180;
 
@@ -20,11 +21,17 @@ function getPoint(index: number, radius: number) {
   }
 }
 
+const points = itemKeys.map((key, index) => {
+  const value = data.items[key];
+  const radius = chartWidth * value;
+  return getPoint(index, radius);
+});
+
 ---
 
 <div>
-  <!-- <polygon points={points} stroke="black" fill="#fff" stroke-width="2" /> -->
-  <svg x=0 y=0 width={length} height={length} style="background-color: #FFF" >
+  <svg x=0 y=0 width={length} height={length} style={`background-color: ${background_color}`} >
+    <Polygon points={points} strokeColor="" strokeWidth="0" fillColor="#D4C9E5" />
     <!-- <line x1="0" y1="400" x2="400" y2="0" stroke="red" stroke-width="1" />
     <line x1="0" y1="0" x2="400" y2="400" stroke="red" stroke-width="1" /> -->
     {
@@ -75,5 +82,6 @@ function getPoint(index: number, radius: number) {
         );
       })
     }
+
   </svg>
 </div>
