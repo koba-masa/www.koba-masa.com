@@ -30,8 +30,8 @@ const points = itemKeys.map((key, index) => {
 ---
 
 <figure>
-  <figcaption><slot></figcaption>
-  <svg x=0 y=0 width={width} height={height} style={`background-color: ${background_color}`} >
+  <figcaption><slot /></figcaption>
+  <svg x={0} y={0} width={width} height={height} style={`background-color: ${background_color}`} >
     <Polygon points={points} strokeColor="" strokeWidth="0" fillColor="#D4C9E5" />
     <!-- <line x1="0" y1="400" x2="400" y2="0" stroke="red" stroke-width="1" />
     <line x1="0" y1="0" x2="400" y2="400" stroke="red" stroke-width="1" /> -->

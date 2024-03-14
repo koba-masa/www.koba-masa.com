@@ -21,12 +21,11 @@ const field = {
     "サーバー": 5,
     "インフラ": 5,
   }
-
 }
 ---
 
 <BaseLayout>
   <h1>{pageTitle}</h1>
-  <RadarChart width=500 height=400 background_color="#f8f8ff" data={language} ><h2>言語スキル</h2></RadarChart>
-  <RadarChart width=500 height=400 background_color="#f8f8ff" data={field}><h2>フルスタックエンジニア度</h2></RadarChart>
+  <RadarChart width={500} height={400} background_color="#f8f8ff" data={language} ><h2>言語スキル</h2></RadarChart>
+  <RadarChart width={500} height={400} background_color="#f8f8ff" data={field}><h2>フルスタックエンジニア度</h2></RadarChart>
 </BaseLayout>
