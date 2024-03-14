@@ -1,0 +1,24 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import RadarChart from "@/components/infographics/RadarChart.astro";
+
+const pageTitle = "self-introduction"
+const data = {
+  title: "",
+  items: {
+    "Python": 4,
+    "Ruby": 4,
+    "TypeScript": 1,
+    "HTML": 2,
+    "CSS": 1,
+    // "CSS1": 70,
+    // "CSS2": 70,
+    // "CSS3": 70,
+  }
+}
+---
+
+<BaseLayout>
+  <h1>{pageTitle}</h1>
+  <RadarChart length=400 background_color="#ddd" data={data} />
+</BaseLayout>

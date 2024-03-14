@@ -1,0 +1,79 @@
+---
+import Line from "@/components/svg/Line.astro";
+const { length, background_color, data } = Astro.props;
+
+const title = data.title;
+const itemKeys = Object.keys(data.items);
+
+const scale = 5;
+const centerX = length / 2;
+const centerY = length / 2;
+const radius = length / 2 * 0.9;
+const chartWidth = radius / (scale - 1);
+const innerRadius = [...Array(5)].map((_, index) => chartWidth * index);
+const startAngle = (180 - (180 * (itemKeys.length - 2) / itemKeys.length) -90) * Math.PI / 180;
+
+function getPoint(index: number, radius: number) {
+  return {
+    x: centerX + radius * Math.cos(startAngle + 2 * Math.PI * index / itemKeys.length),
+    y: centerY + radius * Math.sin(startAngle + 2 * Math.PI * index / itemKeys.length)
+  }
+}
+
+---
+
+<div>
+  <!-- <polygon points={points} stroke="black" fill="#fff" stroke-width="2" /> -->
+  <svg x=0 y=0 width={length} height={length} style="background-color: #FFF" >
+    <!-- <line x1="0" y1="400" x2="400" y2="0" stroke="red" stroke-width="1" />
+    <line x1="0" y1="0" x2="400" y2="400" stroke="red" stroke-width="1" /> -->
+    {
+      itemKeys.map((key, index) => {
+        const nextIndex = index + 1 === itemKeys.length ? 0 : index + 1;
+        const start = getPoint(index, radius);
+        const end = getPoint(nextIndex, radius);
+
+        return (
+          <Line
+            startX={start.x}
+            startY={start.y}
+            endX={end.x}
+            endY={end.y}
+            strokeColor="black"
+            strokeWidth="2"
+          />
+          <Line
+            startX={centerX}
+            startY={centerY}
+            endX={start.x}
+            endY={start.y}
+            strokeColor="black"
+            strokeWidth="1"
+          />
+        );
+      })
+    }
+    {
+      innerRadius.map((iRadius) => {
+        return (
+          itemKeys.map((key, index) => {
+            const nextIndex = index + 1 === itemKeys.length ? 0 : index + 1;
+            const start = getPoint(index, iRadius);
+            const end = getPoint(nextIndex, iRadius);
+
+            return (
+              <Line
+                startX={start.x}
+                startY={start.y}
+                endX={end.x}
+                endY={end.y}
+                strokeColor="black"
+                strokeWidth="1"
+              />
+            );
+          })
+        );
+      })
+    }
+  </svg>
+</div>
