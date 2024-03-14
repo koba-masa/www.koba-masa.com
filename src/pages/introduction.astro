@@ -3,22 +3,30 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import RadarChart from "@/components/infographics/RadarChart.astro";
 
 const pageTitle = "self-introduction"
-const data = {
-  title: "",
+const language = {
   items: {
     "Python": 4,
-    "Ruby": 4,
+    "VBA": 5,
+    "Java": 4,
+    "Shell": 5,
+    "C": 1,
+    "JavaScript": 1,
     "TypeScript": 1,
-    "HTML": 2,
-    "CSS": 1,
-    "CSS1": 5,
-    // "CSS2": 70,
-    // "CSS3": 70,
+    "Ruby": 4,
   }
+}
+const field = {
+  items: {
+    "フロント": 2,
+    "サーバー": 5,
+    "インフラ": 5,
+  }
+
 }
 ---
 
 <BaseLayout>
   <h1>{pageTitle}</h1>
-  <RadarChart length=400 background_color="#fff" data={data} />
+  <RadarChart width=500 height=400 background_color="#f8f8ff" data={language} ><h2>言語スキル</h2></RadarChart>
+  <RadarChart width=500 height=400 background_color="#f8f8ff" data={field}><h2>フルスタックエンジニア度</h2></RadarChart>
 </BaseLayout>

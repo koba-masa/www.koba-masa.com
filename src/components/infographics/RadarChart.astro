@@ -1,15 +1,15 @@
 ---
 import Line from "@/components/svg/Line.astro";
 import Polygon from "@/components/svg/Polygon.astro";
-const { length, background_color, data } = Astro.props;
+import Text from "@/components/svg/Text.astro";
+const { width, height, background_color, data } = Astro.props;
 
-const title = data.title;
 const itemKeys = Object.keys(data.items);
 
 const scale = 5;
-const centerX = length / 2;
-const centerY = length / 2;
-const radius = length / 2 * 0.9;
+const centerX = width / 2;
+const centerY = height / 2;
+const radius = height / 2 * 0.85;
 const chartWidth = radius / scale;
 const innerRadius = [...Array(5)].map((_, index) => chartWidth * index);
 const startAngle = (180 - (180 * (itemKeys.length - 2) / itemKeys.length) -90) * Math.PI / 180;
@@ -29,8 +29,9 @@ const points = itemKeys.map((key, index) => {
 
 ---
 
-<div>
-  <svg x=0 y=0 width={length} height={length} style={`background-color: ${background_color}`} >
+<figure>
+  <figcaption><slot></figcaption>
+  <svg x=0 y=0 width={width} height={height} style={`background-color: ${background_color}`} >
     <Polygon points={points} strokeColor="" strokeWidth="0" fillColor="#D4C9E5" />
     <!-- <line x1="0" y1="400" x2="400" y2="0" stroke="red" stroke-width="1" />
     <line x1="0" y1="0" x2="400" y2="400" stroke="red" stroke-width="1" /> -->
@@ -55,8 +56,9 @@ const points = itemKeys.map((key, index) => {
             endX={start.x}
             endY={start.y}
             strokeColor="black"
-            strokeWidth="1"
+            strokeWidth="0.5"
           />
+          <Text x={start.x} y={start.y}>{key}</Text>
         );
       })
     }
@@ -75,13 +77,12 @@ const points = itemKeys.map((key, index) => {
                 endX={end.x}
                 endY={end.y}
                 strokeColor="black"
-                strokeWidth="1"
+                strokeWidth="0.5"
               />
             );
           })
         );
       })
     }
-
   </svg>
-</div>
+</figure>
