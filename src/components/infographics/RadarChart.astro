@@ -1,0 +1,88 @@
+---
+import Line from "@/components/svg/Line.astro";
+import Polygon from "@/components/svg/Polygon.astro";
+import Text from "@/components/svg/Text.astro";
+const { width, height, background_color, data } = Astro.props;
+
+const itemKeys = Object.keys(data.items);
+
+const scale = 5;
+const centerX = width / 2;
+const centerY = height / 2;
+const radius = height / 2 * 0.85;
+const chartWidth = radius / scale;
+const innerRadius = [...Array(5)].map((_, index) => chartWidth * index);
+const startAngle = (180 - (180 * (itemKeys.length - 2) / itemKeys.length) -90) * Math.PI / 180;
+
+function getPoint(index: number, radius: number) {
+  return {
+    x: centerX + radius * Math.cos(startAngle + 2 * Math.PI * index / itemKeys.length),
+    y: centerY + radius * Math.sin(startAngle + 2 * Math.PI * index / itemKeys.length)
+  }
+}
+
+const points = itemKeys.map((key, index) => {
+  const value = data.items[key];
+  const radius = chartWidth * value;
+  return getPoint(index, radius);
+});
+
+---
+
+<figure>
+  <figcaption><slot /></figcaption>
+  <svg x={0} y={0} width={width} height={height} style={`background-color: ${background_color}`} >
+    <Polygon points={points} strokeColor="" strokeWidth="0" fillColor="#D4C9E5" />
+    <!-- <line x1="0" y1="400" x2="400" y2="0" stroke="red" stroke-width="1" />
+    <line x1="0" y1="0" x2="400" y2="400" stroke="red" stroke-width="1" /> -->
+    {
+      itemKeys.map((key, index) => {
+        const nextIndex = index + 1 === itemKeys.length ? 0 : index + 1;
+        const start = getPoint(index, radius);
+        const end = getPoint(nextIndex, radius);
+
+        return (
+          <Line
+            startX={start.x}
+            startY={start.y}
+            endX={end.x}
+            endY={end.y}
+            strokeColor="black"
+            strokeWidth="2"
+          />
+          <Line
+            startX={centerX}
+            startY={centerY}
+            endX={start.x}
+            endY={start.y}
+            strokeColor="black"
+            strokeWidth="0.5"
+          />
+          <Text x={start.x} y={start.y}>{key}</Text>
+        );
+      })
+    }
+    {
+      innerRadius.map((iRadius) => {
+        return (
+          itemKeys.map((key, index) => {
+            const nextIndex = index + 1 === itemKeys.length ? 0 : index + 1;
+            const start = getPoint(index, iRadius);
+            const end = getPoint(nextIndex, iRadius);
+
+            return (
+              <Line
+                startX={start.x}
+                startY={start.y}
+                endX={end.x}
+                endY={end.y}
+                strokeColor="black"
+                strokeWidth="0.5"
+              />
+            );
+          })
+        );
+      })
+    }
+  </svg>
+</figure>
