@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import RadarChart from "@/components/infographics/RadarChart.astro";
+import ItemMap from "@/components/introduction/ItemMap.astro";
 
 const pageTitle = "self-introduction"
 const language = {
@@ -22,10 +23,71 @@ const field = {
     "インフラ": 5,
   }
 }
+const items = {
+  content: "Start",
+  color: "#f8f8ff",
+  children: [
+    {content: "好きなこと", color: "#7fffd4", children: [
+      {content: "ゲーム", color: "#7fffd4", children: [
+        {content: "小島監督", color: "#7fffd4", children: []},
+        {content: "仁王", color: "#7fffd4", children: []},
+      ]},
+      {content: "プログラミング", color: "#7fffd4", children: [
+        {content: "休日は何かしらコーディングしている", color: "#7fffd4", children: []},
+      ]},
+      {content: "美味しいものを食べる", color: "#7fffd4", children: [
+        {content: "エンゲル係数がやばい", color: "#7fffd4", children: []},
+      ]},
+      {content: "Astro", color: "#7fffd4", children: [
+        {content: "フロントエンドのフレームワーク", color: "#7fffd4", children: []},
+        {content: "なぜか、心惹かれる", color: "#7fffd4", children: []},
+      ]},
+      {content: "日本史", color: "#7fffd4", children: [
+        {content: "戦国自体", color: "#7fffd4", children: [
+          {content: "城", color: "#7fffd4", children: []},
+        ]},
+      ]},
+    ]},
+    {content: "嫌いなこと", color: "#ccc", children: [
+      {content: "遅刻", color: "#ccc", children: [
+        {content: "誰かの時間を奪うのが嫌すぎる", color: "#ccc", children: []},
+      ]},
+      {content: "雰囲気の悪いチーム", color: "#ccc", children: [
+        {content: "目指しているチーム", color: "#ccc", children: [
+          {content: "弱さを開示できる", color: "#ccc", children: []},
+          {content: "気軽に議論できる", color: "#ccc", children: []},
+        ]},
+      ]},
+    ]},
+    {content: "得意なこと", color: "#00bfff", children: [
+      {content: "サーバーサイド", color: "#00bfff", children: [
+        {content: "本職", color: "#00bfff", children: []},
+      ]},
+      {content: "インフラ", color: "#00bfff", children: [
+        {content: "アプリケーションを動かすには、インフラが不可欠と思い、勉強していた", color: "#00bfff", children: []},
+      ]},
+    ]},
+    {content: "苦手なこと", color: "#faebd7", children: [
+      {content: "フロントエンド", color: "#faebd7", children: [
+        {content: "フックとか、あの辺の概念が苦手", color: "#faebd7", children: []},
+        {content: "ちゃんと勉強すれば、フルスタックエンジニアを名乗れそうなのに、やらない", color: "#faebd7", children: []},
+      ]},
+      {content: "人に何かを教える", color: "#faebd7", children: []},
+      {content: "ビジネスベースでシステムを考える", color: "#faebd7", children: []},
+    ]},
+  ]
+};
 ---
 
 <BaseLayout>
   <h1>{pageTitle}</h1>
   <RadarChart width={500} height={400} background_color="#f8f8ff" data={language} ><h2>言語スキル</h2></RadarChart>
   <RadarChart width={500} height={400} background_color="#f8f8ff" data={field}><h2>フルスタックエンジニア度</h2></RadarChart>
+  <div class="item-map"><ItemMap items={items} parent_id={0} /></div>
 </BaseLayout>
+
+<style>
+  .item-map {
+    width: 100%;
+    height: 100%;
+  }
