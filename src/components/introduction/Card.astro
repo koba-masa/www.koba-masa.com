@@ -1,0 +1,24 @@
+---
+const { content, color, isMultiple } = Astro.props;
+const noNextCard = isMultiple ? "" : "no-next"
+---
+<div class=`card ${noNextCard}`>
+  <span>{content}</span>
+</div>
+
+<style define:vars={{ color }}>
+  .card {
+    background-color: var(--color);
+    box-shadow: 10px 10px 5px #ddd;
+    width: 200px;
+    height: 100px;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    margin: 20px;
+  }
+
+  .no-next {
+    box-shadow: none;
+  }
+</style>

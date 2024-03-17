@@ -1,0 +1,42 @@
+---
+import Card from './Card.astro';
+import Self from './ItemMap.astro';
+const { items, parent_id } = Astro.props;
+
+const id = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+const name = `id-${parent_id}-${id}`
+---
+
+<div class="group">
+  <input type="checkbox" hidden id={name}/>
+  <label for={name}>
+    <Card content={items.content} color={items.color} isMultiple={items.children.length > 0} />
+  </label>
+  <div class="child">
+    {
+      items.children.map((children: {content: string, color: string, children: []}) => {
+        return (
+          <Self items={children} parent_id={id} />
+        )
+      })
+    }
+  </div>
+</div>
+
+<style>
+  .group {
+    /* border: 1px solid #000; */
+    margin: 10px;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .child {
+    display: none;
+  }
+
+  .group > input:checked ~ .child {
+    display: flex;
+    flex-direction: row;
+  }
+</style>
