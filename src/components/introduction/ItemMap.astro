@@ -6,7 +6,7 @@ const { items, parent_id } = Astro.props;
 const id = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
 const name = `id-${parent_id}-${id}`
 ---
-
+<!-- TODO: カード間で線を引くことができるようにしたい -->
 <div class="group">
   <input type="checkbox" hidden id={name}/>
   <label for={name}>
