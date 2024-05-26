@@ -29,24 +29,19 @@ jobs:
           node-version: "20.3"
           cache: pnpm
 
+      - name: Setup AWS CLI
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
       - name: Build
         run: |
           pnpm install
           pnpm build
-          tar czf dist.tar.gz dist
 
       - name: Deploy
         run: |
-          ssh_identifier="identifier"
-          echo "${{ secrets.DEPLOY_SERVER_IDENTIFIER }}" > ${ssh_identifier}
-          chmod 600 ${ssh_identifier}
-          scp -P ${{ secrets.DEPLOY_SERVER_PORT }} \
-              -i ${ssh_identifier} \
-              -o StrictHostKeyChecking=no \
-              dist.tar.gz deploy.sh ${{ secrets.DEPLOY_SERVER_USER }}@${{ secrets.DEPLOY_SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}/.
-          ssh ${{ secrets.DEPLOY_SERVER_USER }}@${{ secrets.DEPLOY_SERVER_HOST }} \
-              -p ${{ secrets.DEPLOY_SERVER_PORT }} \
-              -i ${ssh_identifier} \
-              -o StrictHostKeyChecking=no \
-              bash ${{ secrets.DEPLOY_PATH }}/deploy.sh
-          rm ${ssh_identifier}
+          aws s3 sync dist s3://${{ secrets.S3_BUCKET }} --delete
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
