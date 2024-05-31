@@ -1,0 +1,19 @@
+.wf-process-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.wf-process-heading {
+  grid-row: 1;
+  text-align: center;
+  border: solid 1px black;
+  margin: 2px -1px -1px 0;
+}
+
+.wf-process-body {
+  grid-row: 2;
+  text-align: center;
+  border: solid 1px black;
+  margin: 0 -1px -1px 0;
+}

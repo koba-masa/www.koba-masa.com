@@ -1,0 +1,24 @@
+{
+  "term": {
+     "start": "2024/04/01",
+     "end": ""
+  },
+  "industry": "Sample",
+  "title": "タイトル",
+  "methods": "Waterfall",
+  "process": {
+     "analysis": true,
+     "design": true,
+     "development": true,
+     "testing": true,
+     "deployment": true,
+     "operation_and_maintenance": true
+  },
+  "technology": {
+     "tools": [],
+     "languages": [],
+     "frameworks": [],
+     "platforms": []
+  },
+  "remark": ""
+}

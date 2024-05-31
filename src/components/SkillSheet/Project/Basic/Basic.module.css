@@ -1,0 +1,57 @@
+.project-basic-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 3fr;
+  grid-template-rows: 1fr 2fr;
+}
+
+.heading {
+  text-align: center;
+  margin: auto;
+  border: solid 1px black;
+}
+
+.body {
+  text-align: center;
+  border: solid 1px black;
+  height: 100%;
+}
+
+.body > span {
+  position: relative;
+  top: 50%;
+}
+
+.project-term > .heading {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0 -1px 0 0;
+}
+
+.project-term > .body {
+  grid-column: 1;
+  grid-row: 2;
+  margin: -1px -1px 0 0;
+}
+
+.project-industry > .heading {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0 -1px 0 0;
+}
+
+.project-industry > .body {
+  grid-column: 2;
+  grid-row: 2;
+  margin: -1px -1px 0 0;
+}
+
+.project-title > .heading {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.project-title > .body {
+  grid-column: 3;
+  grid-row: 2;
+  margin: -1px 0 0;
+}
