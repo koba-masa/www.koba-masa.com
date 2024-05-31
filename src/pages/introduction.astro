@@ -2,6 +2,8 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import RadarChart from "@/components/infographics/RadarChart.astro";
 import ItemMap from "@/components/introduction/ItemMap.astro";
+import { Project } from "@/components/SkillSheet/Project/Project";
+import { type Project as ProjectType } from "@/components/SkillSheet/Project/Project";
 
 const pageTitle = "self-introduction"
 const language = {
@@ -77,13 +79,26 @@ const items = {
     ]},
   ]
 };
+
+const projects = await Astro.glob<ProjectType>('../content/skills/project*.json');
+const sortedProjects = projects.sort((a, b) => {
+  const aDate = new Date(a.term.start);
+  const bDate = new Date(b.term.start);
+
+  return bDate.getTime() - aDate.getTime();
+});
 ---
 
-<BaseLayout>
+<BaseLayout pageTitle={pageTitle} isNoIndex={true}>
   <h1>{pageTitle}</h1>
   <RadarChart width={500} height={400} background_color="#f8f8ff" data={language} ><h2>言語スキル</h2></RadarChart>
   <RadarChart width={500} height={400} background_color="#f8f8ff" data={field}><h2>フルスタックエンジニア度</h2></RadarChart>
   <div class="item-map"><ItemMap items={items} parent_id={0} /></div>
+  {
+    sortedProjects.map((project) => {
+      return <Project project={project}/>
+    })
+  }
 </BaseLayout>
 
 <style>

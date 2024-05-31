@@ -1,0 +1,24 @@
+{
+  "term": {
+     "start": "",
+     "end": ""
+  },
+  "industry": "",
+  "title": "",
+  "methods": "",
+  "process": {
+     "analysis": false,
+     "design": false,
+     "development": false,
+     "testing": false,
+     "deployment": false,
+     "operation_and_maintenance": false
+  },
+  "technology": {
+     "tools": [],
+     "languages": [],
+     "frameworks": [],
+     "platforms": []
+  },
+  "remark": ""
+}
