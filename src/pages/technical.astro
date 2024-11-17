@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('technical');
+const baseUrl = '/technical';
+---
+
+<BaseLayout pageTitle="技術資料">
+  <h1>技術資料</h1>
+
+  <h2>記事一覧</h2>
+  <ul>
+    {posts.map((post) => (
+      <li>
+        <a href={`${baseUrl}/${post.slug}`}>{post.data.title}</a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

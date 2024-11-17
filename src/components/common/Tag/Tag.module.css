@@ -1,0 +1,16 @@
+.container {
+  margin-left: 1rem;
+}
+
+.tag {
+  font-size: x-small;
+  color: dimgray;
+  margin-right: 0.5rem;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  background-color: #d4c9e5;
+}
+
+.tag:last-child {
+  margin-right: 0;
+}
