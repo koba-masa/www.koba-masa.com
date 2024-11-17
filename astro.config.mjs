@@ -8,9 +8,9 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     react(),
-    mdx(),
     starlight({
       title: 'www.koba-masa.com',
-    })
+    }),
+    mdx(),
   ],
 });
