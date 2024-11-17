@@ -6,5 +6,11 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), mdx(), starlight()],
+  integrations: [
+    react(),
+    mdx(),
+    starlight({
+      title: 'www.koba-masa.com',
+    })
+  ],
 });
