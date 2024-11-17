@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { docsSchema } from '@astrojs/starlight/schema'
 
 const technicalCollection = defineCollection({
   type: "content",
@@ -11,4 +12,5 @@ const technicalCollection = defineCollection({
 
 export const collections = {
   technical: technicalCollection,
+  docs: defineCollection({ schema: docsSchema() }),
 };
