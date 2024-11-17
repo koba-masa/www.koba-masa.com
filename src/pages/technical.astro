@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const pageTitle = "技術資料"
+const posts = await getCollection('technical');
+---
+
+<BaseLayout>
+  <h1>{pageTitle}</h1>
+  <main>
+    <ul>
+      {posts.map((post) => (
+        <li>
+          <a href={`/technical/${post.slug}`}>{post.data.title}</a>
+        </li>
+      ))}
+  </main>
+</BaseLayout>
