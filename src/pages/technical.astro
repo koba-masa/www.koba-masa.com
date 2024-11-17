@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { BlogLink } from '@/components/common/BlogLink';
+
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('technical');
@@ -13,7 +15,7 @@ const baseUrl = '/technical';
   <ul>
     {posts.map((post) => (
       <li>
-        <a href={`${baseUrl}/${post.slug}`}>{post.data.title}</a>
+        <BlogLink text={post.data.title} url={`${baseUrl}/${post.slug}`} tags={post.data.tags}/>
       </li>
     ))}
   </ul>
